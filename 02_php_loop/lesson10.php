@@ -21,14 +21,35 @@ $arr = [99, 3, 12, 45, 60, 100, 31, 7, 28];
 $arr = [99, 3, 12, 45, 60, 100, 31, 7, 28];
 
 // ここで並び替え処理
+$count = count($arr);
 ?>
+<?php
+for ($i = 0; $i < $count; $i++) {
+    for ($b = 1; $b < $count; $b++) { //右隣の数字のインデックス番号を$bとする
+        $a = $b - 1; //←左隣の数字のインデックス番号を$aとする
+        if ($arr[$a] > $arr[$b]) {
+            $temp = $arr[$b];
+            $arr[$b] = $arr[$a];
+            $arr[$a] = $temp;
+        }
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
-<meta charset="utf-8">
-<title>数字並び替えプログラム</title>
+    <meta charset="utf-8">
+    <title>数字並び替えプログラム</title>
 </head>
+
 <body>
     <!-- ここに並び替え後を表示 -->
+    <?php
+    $str = implode(', ', $arr);
+    echo $str;
+    ?>
 </body>
+
 </html>
