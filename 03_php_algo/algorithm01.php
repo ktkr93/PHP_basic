@@ -29,17 +29,33 @@
 function nabeatsu($i)
 {
     // この関数内に処理を記述
+    for ($i = 1; $i <= 100; $i++) {
+        if ($i % 3 == 0 && $i % 5 == 0) {
+            echo $i . ' アホわん';
+        } elseif ($i % 3 == 0) {
+            echo $i . ' アホ';
+        } elseif ($i % 5 == 0) {
+            echo $i . ' わん';
+        } else {
+            echo $i;
+        }
+        echo '<br>';
+    }
 }
 ?>
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
-<meta charset="utf-8">
-<title>世界のナベアツプログラム</title>
+    <meta charset="utf-8">
+    <title>世界のナベアツプログラム</title>
 </head>
+
 <body>
     <section>
         <!-- ここに結果表示 -->
+        <?php nabeatsu(1) ?>
     </section>
 </body>
+
 </html>
