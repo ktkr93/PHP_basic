@@ -21,19 +21,39 @@
 $yen = 10000;   // 購入金額
 $product = 150; // 商品金額
 
-function calc($yen, $product) {
+function calc($yen, $product)
+{
     // この関数内に処理を記述
+    $yen -= $product;
+    $changes = [10000, 5000, 1000, 500, 100, 50, 10, 5, 1];
+    foreach ($changes as $change) {
+        if ($change >= 1000) {
+            echo $change . '円札x' . floor($yen / $change) . '枚';
+            $yen -=  $change * floor($yen / $change);
+        } else {
+            echo $change . '円玉x' . floor($yen / $change) . '枚';
+            $yen -=  $change * floor($yen / $change);
+        }
+        if (next($changes)) {
+            echo '、'; // 最後の要素ではないとき
+        }
+    }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
-<meta charset="utf-8">
-<title>お釣り</title>
+    <meta charset="utf-8">
+    <title>お釣り</title>
 </head>
+
 <body>
     <section>
         <!-- ここに結果表示 -->
+        <?php calc($yen, $product) ?>
     </section>
 </body>
+
 </html>
